@@ -9,6 +9,10 @@ from typing import List
 BUFF_HEIGHT = 30
 BUFF_WIDTH = 60
 
+ASCII_DROP = ":"
+
+RAIN_DENSITY = 1  # 0 -> 100 inclusive
+
 buff = []
 
 
@@ -42,7 +46,7 @@ def clear_screen():
     os.system("clear")
 
 while True:
-    current_values = ["." if random.randint(0, 5) > 4 else " " for i in range(BUFF_WIDTH)]
+    current_values = [ASCII_DROP if random.randint(0, 100) >= (100 - RAIN_DENSITY) else " " for i in range(BUFF_WIDTH)]
     if len(buff) < BUFF_HEIGHT:
         buff.append(current_values)
     else:
